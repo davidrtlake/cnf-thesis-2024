@@ -1,0 +1,432 @@
+<!-- activity_main.xml -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- App Title -->
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CNF Segmentation App"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp" />
+
+        <!-- Average Severity Score -->
+        <TextView
+            android:id="@+id/averageSeverityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average Severity Score: 0.00"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
+
+        <!-- Front Torso Section -->
+        <LinearLayout
+            android:id="@+id/frontTorsoSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_border"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textFrontTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Front Torso"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/imageFrontTorso"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Front Torso Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonUploadFrontTorso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:layout_marginEnd="16dp"
+                    style="@style/ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonProcessFrontTorso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Output"
+                    style="@style/ButtonStyle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textTimerFrontTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/outputImageFrontTorso"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Output Front Torso Image"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textIoUFrontTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Score: N/A"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Back Torso Section -->
+        <LinearLayout
+            android:id="@+id/backTorsoSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_border"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textBackTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back Torso"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/imageBackTorso"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Back Torso Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonUploadBackTorso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:layout_marginEnd="16dp"
+                    style="@style/ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonProcessBackTorso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Output"
+                    style="@style/ButtonStyle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textTimerBackTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/outputImageBackTorso"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Output Back Torso Image"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textIoUBackTorso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Score: N/A"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Chest to Head Section -->
+        <LinearLayout
+            android:id="@+id/chestToHeadSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_border"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textChestToHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chest to Head"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/imageChestToHead"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Chest to Head Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonUploadChestToHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:layout_marginEnd="16dp"
+                    style="@style/ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonProcessChestToHead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Output"
+                    style="@style/ButtonStyle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textTimerChestToHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/outputImageChestToHead"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Output Chest to Head Image"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textIoUChestToHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Score: N/A"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Arms Section -->
+        <LinearLayout
+            android:id="@+id/armsSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_border"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/textArms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arms"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/imageArms"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Arms Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonUploadArms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:layout_marginEnd="16dp"
+                    style="@style/ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonProcessArms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Output"
+                    style="@style/ButtonStyle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textTimerArms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/outputImageArms"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Output Arms Image"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textIoUArms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Score: N/A"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Legs Section -->
+        <LinearLayout
+            android:id="@+id/legsSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/section_border"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/textLegs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Legs"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <ImageView
+                android:id="@+id/imageLegs"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Legs Image"
+                android:scaleType="fitCenter"
+                android:src="@drawable/placeholder"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonUploadLegs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:layout_marginEnd="16dp"
+                    style="@style/ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonProcessLegs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Output"
+                    style="@style/ButtonStyle" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textTimerLegs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginTop="8dp" />
+
+            <ImageView
+                android:id="@+id/outputImageLegs"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="Output Legs Image"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textIoULegs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Score: N/A"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
