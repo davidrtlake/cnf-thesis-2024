@@ -12,11 +12,11 @@ plugins {
 }
 
 android {
-  namespace = "com.example.executorchdemo"
+  namespace = "com.example.executorch"
   compileSdk = 34
 
   defaultConfig {
-    applicationId = "com.example.executorchdemo"
+    applicationId = "com.example.executorch"
     minSdk = 24
     targetSdk = 33
     versionCode = 1

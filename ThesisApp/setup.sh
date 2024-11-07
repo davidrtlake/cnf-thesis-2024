@@ -35,6 +35,6 @@ cmake extension/android \
 
 cmake --build "${CMAKE_OUT}"/extension/android -j "${CMAKE_JOBS}" --config Release
 
-JNI_LIBS_PATH="examples/demo-apps/android/ExecuTorchDemo/app/src/main/jniLibs"
+JNI_LIBS_PATH="examples/demo-apps/android/ExecuTorch/app/src/main/jniLibs"
 mkdir -p "${JNI_LIBS_PATH}/${ANDROID_ABI}"
 cp "${CMAKE_OUT}"/extension/android/libexecutorch_jni.so "${JNI_LIBS_PATH}/${ANDROID_ABI}/"

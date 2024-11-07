@@ -1,4 +1,4 @@
-package com.example.executorchdemo;
+package com.example.executorch;
 
 import android.Manifest;
 import android.app.Activity;
@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat;
 
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -171,11 +170,6 @@ public class MainActivity extends Activity {
 
     buttonUploadLegs.setOnClickListener(v -> selectImage("legs"));
     buttonProcessLegs.setOnClickListener(v -> processImage("legs"));
-
-    // Request permissions
-    if (!hasPermissions()) {
-      requestPermissions();
-    }
   }
 
   private void selectImage(String bodyPart) {
@@ -334,12 +328,14 @@ public class MainActivity extends Activity {
       // Run skin segmentation
       Tensor skinOutputTensor = skinModule.forward(EValue.from(inputTensor))[0].toTensor();
 
+      float skinIOU = computeIoU(skinOutputTensor);
+
       // Create skin mask bitmap
       Bitmap skinMaskBitmap = processOutput(skinOutputTensor, resizedBitmap.getWidth(), resizedBitmap.getHeight(), resizedBitmap);
 
       // Update UI to indicate skin segmentation finished
       runOnUiThread(() -> {
-        finalTextTimer.setText("Skin segmenting finished... Starting lesion segmentation...");
+        finalTextTimer.setText("Skin segmenting finished... Starting tumour segmentation...");
       });
 
       // Apply skin mask to the resized image
@@ -351,12 +347,14 @@ public class MainActivity extends Activity {
       // Run inference
       Tensor outputTensor = module.forward(EValue.from(inputTensor))[0].toTensor();
 
+      float tumourIOU = computeIoU(outputTensor);
+
       // Process the output tensor to create segmentation mask
       Bitmap outputBitmap = processOutput(outputTensor, resizedBitmap.getWidth(), resizedBitmap.getHeight(), resizedBitmap);
 
       // Update UI to indicate skin segmentation finished
       runOnUiThread(() -> {
-        finalTextTimer.setText("Skin segmenting finished... Lesion segmenting finished...");
+        finalTextTimer.setText("Skin segmenting finished... Tumour segmenting finished...");
       });
 
       // Rotate back if needed
@@ -365,7 +363,7 @@ public class MainActivity extends Activity {
       }
 
       // Compute IoU
-      float severityScore = computeIoU(outputTensor);
+      float severityScore = tumourIOU / skinIOU * 100;
 
       // Store severity score
       severityScores.put(finalBodyPart, severityScore);
@@ -386,13 +384,13 @@ public class MainActivity extends Activity {
       Bitmap finalOutputBitmap = outputBitmap; // I added this david
       runOnUiThread(() -> {
         finalOutputImageView.setImageBitmap(finalOutputBitmap);
-        finalTextIoU.setText(String.format("Severity Score: %.2f", severityScore));
+        finalTextIoU.setText(String.format("Severity Score: %.0f / 100", severityScore));
         finalTextTimer.setText(timeString);
         finalButtonProcess.setEnabled(true);
         finalButtonProcess.setText("View Output");
 
         // Update average severity score in UI
-        averageSeverityTextView.setText(String.format("Average Severity Score: %.2f", averageSeverityScore));
+        averageSeverityTextView.setText(String.format("Average Severity Score: %.0f / 100", averageSeverityScore));
       });
     });
   }
@@ -580,17 +578,6 @@ public class MainActivity extends Activity {
     } else {
       return (float) intersection / union;
     }
-  }
-
-  private boolean hasPermissions() {
-    return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-            == PackageManager.PERMISSION_GRANTED;
-  }
-
-  private void requestPermissions() {
-    ActivityCompat.requestPermissions(this,
-            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-            PERMISSION_REQUEST_CODE);
   }
 
   @Override

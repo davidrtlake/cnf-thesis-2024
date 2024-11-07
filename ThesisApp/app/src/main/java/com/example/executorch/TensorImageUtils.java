@@ -1,4 +1,4 @@
-package com.example.executorchdemo;
+package com.example.executorch;
 
 import android.graphics.Bitmap;
 import java.nio.FloatBuffer;

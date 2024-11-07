@@ -40,8 +40,8 @@ For delegating DeepLab v3 to XNNPACK backend, please do the following to export 
 
 ```bash
 python3 -m examples.xnnpack.aot_compiler --model_name="dl3" --delegate
-mkdir -p examples/demo-apps/android/ExecuTorchDemo/app/src/main/assets/
-cp dl3_xnnpack_fp32.pte examples/demo-apps/android/ExecuTorchDemo/app/src/main/assets/
+mkdir -p examples/demo-apps/android/ExecuTorch/app/src/main/assets/
+cp dl3_xnnpack_fp32.pte examples/demo-apps/android/ExecuTorch/app/src/main/assets/
 ```
 
 For more detailed tutorial of lowering to XNNPACK, please see [XNNPACK backend](tutorial-xnnpack-delegate-lowering.md).

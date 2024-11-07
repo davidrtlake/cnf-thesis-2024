@@ -22,7 +22,7 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "ExecuTorch Thesis"
+rootProject.name = "ExecuTorch"
 
 include(":app")
 
